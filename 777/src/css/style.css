@@ -3,7 +3,22 @@
   flex-direction: row;
 }
 
-.listing-block select,
-.store-block select {
+.listing-block select, .store-block select {
   width: 17em;
+}
+
+.listing-buttons {
+  white-space: pre-line;
+  display: inline-block;
+}
+
+.both-buttons {
+  margin-left: 50px;
+  display: inline-block;
+}
+
+.store-buttons {
+  white-space: pre-line;
+  display: inline-block;
+  margin-left: 50px;
 }

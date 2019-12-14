@@ -5,6 +5,8 @@ window.onload = function () {
   var clearAllButton = document.querySelector('#clear-all');
   var addListing = document.querySelector('#add-item');
   var sortButton = document.querySelector('#sort-button');
+  var listingDeleteButton = document.querySelector('#delete-button');
+  var storeDeleteButton = document.querySelector('#button-delete');
 
   function addToStoreElements(element) {
     var elementPosition = listingElements.indexOf(element);
@@ -12,6 +14,33 @@ window.onload = function () {
       storeElements.push(element);
       listingElements.splice(elementPosition, 1);
     }
+  }
+
+  //delete selected item from listing
+  function deleteElement(element) {
+    var elementPosition = listingElements.indexOf(element);
+    if (elementPosition > -1) {
+      listingElements.splice(elementPosition, 1);
+    }
+  }
+
+  listingDeleteButton.onclick = function () {
+    var selectedOption = document.querySelector('.listing-select option:checked');
+    deleteElement(selectedOption.innerText);
+    updateUI();
+  }
+  // delete selected item from store
+  function deleteElemment(element) {
+    var elementPosition = storeElements.indexOf(element);
+    if (elementPosition > -1) {
+      storeElements.splice(elementPosition, 1);
+    }
+  }
+
+  storeDeleteButton.onclick = function () {
+    var selectedOption = document.querySelector('.store-select option:checked');
+    deleteElemment(selectedOption.innerText);
+    updateUI();
   }
 
   function clearAll() {
@@ -23,22 +52,25 @@ window.onload = function () {
     clearAll();
     updateUI();
   }
-function newItem () {
-  var result = prompt('add new item');
+
+  function addNewItem() {
+    var result = prompt('add new item');
     listingElements.push(result);
-}
+  }
+
   addListing.onclick = function () {
-    newItem();
+    addNewItem();
     updateUI();
   }
-function sortStore() {
-  storeElements.sort();
-}
 
-sortButton.onclick = function() {
-  sortStore();
-  updateUI();
-}
+  function sortStore() {
+    storeElements.sort();
+  }
+
+  sortButton.onclick = function () {
+    sortStore();
+    updateUI();
+  }
 
 
   function updateUI() {
